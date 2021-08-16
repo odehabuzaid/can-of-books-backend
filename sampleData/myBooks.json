@@ -1,0 +1,27 @@
+[
+  {
+   "Book_Title": "Eloquent JavaScript",
+   "Book_DESC":  "This is a book about instructing computers. Computers are about as common as screwdrivers today, but they are quite a bit more complex, and making them do what you want them to do isn’t always easy.",
+   "Status":  "Avaliable"
+  },
+  {
+    "Book_Title": "JavaScript and JQuery",
+    "Book_DESC":  "Interactive Front-End Web Development",
+    "Status":  "Avaliable"
+   },
+   {
+    "Book_Title": "Learn JavaScript Quickly",
+    "Book_DESC":  "A Complete Beginner’s Guide to Learning JavaScript, Even If You’re New to Programming (Crash Course With Hands-On Project)",
+    "Status":  "Avaliable"
+   },
+   {
+    "Book_Title": "HTML and CSS QuickStart Guide",
+    "Book_DESC":  "The Simplified Beginners Guide to Developing a Strong Coding Foundation, Building Responsive Websites, and Mastering ... of Modern Web Design (QuickStart Guides)",
+    "Status":  "Avaliable"
+   },
+   {
+    "Book_Title": "Python Crash Course",
+    "Book_DESC":  "A Hands-On, Project-Based Introduction to Programming",
+    "Status":  "Avaliable"
+   }
+]
