@@ -79,5 +79,5 @@ const addTheBooks = async (email) => {
     .catch((error) => console.log(error + ' error while saving to database'));
   }
   
-const port = process.env.API_PORT || 3051;
-app.listen(port || 3051, () => console.log(`listening on port ${port}`));
+const PORT = process.env.PORT
+app.listen(PORT, () => console.log(`listening on port ${PORT}`));
