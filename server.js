@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////////////////////////////////////////
 require('dotenv').config();
 const express = require('express');
-const CORS = require('cors');
+const cors = require('cors');
 
 const { getBooksController } = require('./controllers/dataControllers');
 const { checkJwtController,
@@ -17,8 +17,7 @@ const app = express();
 
 app.use(morgan('dev'));
 app.use(helmet());
-app.use(CORS());
-
+app.use(cors());
 app.use(express.json());
 
 //Routes 

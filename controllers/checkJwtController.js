@@ -29,4 +29,5 @@ function getKey (header, callback){
       });
     }
 
+
 module.exports = {checkJwtController,configs};
