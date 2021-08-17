@@ -40,8 +40,9 @@ function getBooksController(request, response) {
           });
         }
 function handleError(error) {
-      console.clear();
-      console.log(error);
+        //to be continued
+      // console.clear();
+      // console.log(error);
     }
 
  
