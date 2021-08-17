@@ -178,7 +178,7 @@ atlassian-ide-plugin.xml
 
 # Cursive Clojure plugin
 .idea/replstate.xml
-
+.idea
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
 crashlytics.properties
@@ -226,6 +226,5 @@ $RECYCLE.BIN/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
-.env
 package-lock.json
 # End of https://www.gitignore.io/api/node,macos,linux,windows,webstorm,visualstudiocode

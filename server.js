@@ -2,7 +2,7 @@
 // Can-of-Books-Backend
 // Today's Lecture Notes & Auth0 offical documentation for react and Express
 /////////////////////////////////////////////////////////////////////////////////////
-require('dotenv').config();
+
 const express = require('express');
 const CORS = require('cors');
 
@@ -11,14 +11,15 @@ const { checkJwtController,
   configs,
 } = require('./controllers/checkJwtController');
 
-const morgan = require('morgan');
-const helmet = require('helmet');
-const app = express();
 
-app.use(morgan('dev'));
-app.use(helmet());
+const app = express();
+require('dotenv').config();
+
 app.use(CORS());
 app.use(express.json());
+
+
+
 
 //Routes 
 app.get('/checkJwt', checkJwtController);
