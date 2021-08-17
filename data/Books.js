@@ -6,11 +6,9 @@ const aBook = new mongoose.Schema({
       Book_DESC: String,
       Status: String,
     });
-    
     const aUser = new mongoose.Schema({
       email:  String,
       books: [aBook]
     });
-
 const Books = mongoose.model('books', aUser)
 module.exports = Books;
