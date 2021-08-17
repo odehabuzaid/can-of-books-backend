@@ -23,6 +23,7 @@ function addTheBooks(email) {
 }
   );
 }
+
 function getBooksController(request, response) {
       MongoClient.connect(configs.AtlasDB, configs.ConnectionParameters, (error, db) => {
             if (error) handleError(error);
@@ -38,7 +39,6 @@ function getBooksController(request, response) {
               });
           });
         }
-
 function handleError(error) {
       console.clear();
       console.log(error);
