@@ -27,6 +27,7 @@ function getKey (header, callback){
         const signInKey = key.publicKey || key.rsaPublicKey;
         callback(null, signInKey);
       });
-    };
+    }
+
 
 module.exports = {checkJwtController,configs};

@@ -18,27 +18,12 @@ const app = express();
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
-
 app.use(express.json());
 
 //Routes 
 app.get('/checkJwt', checkJwtController);
-let MongoClient = require('mongodb').MongoClient;
-app.get('/Books/:email', (request, response) => {
-  MongoClient.connect(configs.AtlasDB, configs.ConnectionParameters, (error, db) => {
-    if (error) throw error;
-    let dbo = db.db('amman-301d28');
-    let query = { email: request.params.email };
-    dbo
-      .collection('books')
-      .find(query)
-      .toArray((error, result) => {
-        if (error) throw error;
-        response.json(result[0]);
-        db.close();
-      });
-  });
-});
+app.get('/Books/:email', getBooksController );
+
 
 const PORT = configs.PORT;
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
