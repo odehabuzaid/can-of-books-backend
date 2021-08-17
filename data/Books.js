@@ -1,6 +1,4 @@
-'use strict';
-const mongoose=require('mongoose');
-
+const mongoose = require('mongoose');
 const aBook = new mongoose.Schema({
       Book_Title: String,
       Book_DESC: String,
@@ -10,5 +8,6 @@ const aBook = new mongoose.Schema({
       email:  String,
       books: [aBook]
     });
-const Books = mongoose.model('books', aUser)
+    const Books = mongoose.model('books', aUser)
+
 module.exports = Books;
