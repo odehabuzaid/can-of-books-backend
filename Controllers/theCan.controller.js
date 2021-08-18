@@ -35,6 +35,7 @@ async function getBooks(request, response) {
   try {
     const token = request.headers.authorization.split(' ')[1];
     checkJwt(token, getTheBooks);
+
     async function getTheBooks(user) {
       const email = user.email;
       await Schema.find({ email }, (error, theCan) => {
@@ -42,7 +43,7 @@ async function getBooks(request, response) {
           handleError(error);
         }
         if (!theCan.length > 0) {
-            theCan[0] = { email, books: [] };
+          theCan[0] = { email, books: [] };
           const verifiedUser = new Schema(theCan[0]);
           verifiedUser.save();
         }
@@ -80,9 +81,25 @@ async function addBook(request, response) {
   }
 }
 
+//to be continued 
+async function deleteBook(request, response) {
+  const token = request.headers.authorization.split(' ')[1];
+  checkJwt(token, deleteTheBook);
+  async function deleteTheBook(user) {
+    const index = +request.params.index;
+    const email = user.email;
+    await theCan.find({ email }, (error, theCan) => {
+      if (error) handleError(error);
+      const booksInTheCan = theCan[0].books.filter((book, i) => i !== index);
+      theCan[0].books = booksInTheCan;
+      theCan[0].save();
+      response.send(booksInTheCan);
+    });
+  }
+}
 function handleError(error) {
   console.clear();
   console.log(error);
 }
 
-module.exports = { getBooks, addBook };
+module.exports = { getBooks, addBook, deleteBook };
