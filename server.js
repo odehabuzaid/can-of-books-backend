@@ -1,45 +1,42 @@
 'use strict';
-// Can-of-Books-Backend
-// Today's Lecture Notes & Auth0 offical documentation for react and Express
-/////////////////////////////////////////////////////////////////////////////////////
 require('dotenv').config();
 const express = require('express');
+const app = express();
 const cors = require('cors');
-const { checkJwtController} = require('./controllers/checkJwtController');
+const mongoose = require('mongoose');
+
 const getConfig = require('./configs/allConfigs');
 const configs = getConfig();
-const app = express();
-
 
 const morgan = require('morgan');
 const helmet = require('helmet');
+
+const { getBooks, addBook } = require('./Controllers/theCan.controller');
+const { checkJwt } = require('./Controllers/checkJwt.controller');
+
 app.use(morgan('dev'));
 app.use(helmet());
+
 app.use(cors());
 app.use(express.json());
 
-//Routes 
-app.get('/checkJwt', checkJwtController);
-app.get('/Books/:email', (request, response) => {
-  let MongoClient = require('mongodb').MongoClient;
-  MongoClient.connect(configs.AtlasDB, configs.ConnectionParameters, (error, db) => {
-    if (error) handleError(error);
-    let dbo = db.db('amman-301d28');
-    let query = { email: request.params.email };
-    dbo.collection('books')
-        .find(query)
-        .toArray((error, result) => {
-            if (error) handleError(error);
-            response.json(result[0]);
-          });
-      });
-    }
-);
+mongoose.connect(configs.AtlasDataBaseConnection, configs.ConnectionParameters);
+const db = mongoose.connection;
+db.on('error', (error) => console.error(error));
+db.once('open', () => {
+  console.log('Mongoose is Connected!');
+});
 
-function handleError(error) {
-  console.clear();
-  console.log(error);
-}
+app.get('/checkJwt', checkJwt);
+app.get('/books', getBooks);
+app.post('/addabook', addBook);
 
-const PORT = configs.PORT;
+const PORT = configs.PORT 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
+
+// https://nodejs.org/api/process.html
+// 'uncaughtException' to stay on service
+// You Stay Alive ..
+process.on('uncaughtException', (err) =>
+  console.log('Caught exception: ', err)
+);
