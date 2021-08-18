@@ -7,10 +7,8 @@ function getConfig() {
     AUTH0_AUDIENCE:process.env.AUTH0_AUDIENCE,
     AtlasDB: process.env.MONGO_DB,
     ConnectionParameters: {
-      keepAlive: true,
-      keepAliveInitialDelay: 300000,
       useNewUrlParser: true,
-      useUnifiedTopology: true,
+      useUnifiedTopology: true
     },
   };
 }
