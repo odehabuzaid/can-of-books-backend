@@ -16,7 +16,6 @@ function checkJwt(token, callback) {
       handleError(err);
       callback(user);
     }
-    // return userInfo;
   );
 }
 
@@ -81,22 +80,26 @@ async function addBook(request, response) {
   }
 }
 
-//to be continued 
 async function deleteBook(request, response) {
-  const token = request.headers.authorization.split(' ')[1];
-  checkJwt(token, deleteTheBook);
-  async function deleteTheBook(user) {
-    const index = +request.params.index;
-    const email = user.email;
-    await theCan.find({ email }, (error, theCan) => {
-      if (error) handleError(error);
-      const booksInTheCan = theCan[0].books.filter((book, i) => i !== index);
-      theCan[0].books = booksInTheCan;
-      theCan[0].save();
-      response.send(booksInTheCan);
-    });
-  }
+  try {
+    const token = request.headers.authorization.split(' ')[1];
+    checkJwt(token, deleteTheBook);
+    async function deleteTheBook(user) {
+      const id = request.params.id;
+      const email = user.email;
+      console.log(id)
+      await Schema.findOne({ email }, (error, theCan) => {
+        if (error)  {
+          handleError(error);
+        }
+        theCan.books.splice(id, 1)
+        theCan.save();
+        response.send(theCan.books);
+      });
+    }
+  } catch (error) {handleError(error)}
 }
+
 function handleError(error) {
   console.clear();
   console.log(error);

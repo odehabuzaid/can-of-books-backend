@@ -30,7 +30,9 @@ db.once('open', () => {
 app.get('/checkJwt', checkJwt);
 app.get('/books', getBooks);
 app.post('/addabook', addBook);
-app.post('/deleteabook', deleteBook);
+app.delete('/books/:id', deleteBook);
+
+
 const PORT = configs.PORT 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
 
