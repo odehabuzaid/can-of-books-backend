@@ -226,11 +226,7 @@ $RECYCLE.BIN/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
-package-lock.json
+
 # End of https://www.gitignore.io/api/node,macos,linux,windows,webstorm,visualstudiocode
 
-Book.js
-sampleData
-myBooks.json
 *.old
-others

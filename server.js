@@ -11,7 +11,7 @@ const configs = getConfig();
 const morgan = require('morgan');
 const helmet = require('helmet');
 
-const { getBooks, addBook , deleteBook } = require('./Controllers/theCan.controller');
+const { getBooks, addBook , deleteBook,updateaBook } = require('./Controllers/theCan.controller');
 const { checkJwt } = require('./Controllers/checkJwt.controller');
 
 app.use(morgan('dev'));
@@ -29,9 +29,9 @@ db.once('open', () => {
 
 app.get('/checkJwt', checkJwt);
 app.get('/books', getBooks);
-app.post('/addabook', addBook);
+app.post('/books', addBook);
 app.delete('/books/:id', deleteBook);
-
+app.put('/books/:id', updateaBook);
 
 const PORT = configs.PORT 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
